@@ -26,11 +26,11 @@ bool MakeMove(std::vector<std::vector<char>>& board,
     std::cerr << "Error: Move out of bounds!\n";
     return false;
   }
-  if (board[col][row] != ' ') {
+  if (board[col - 1][row - 1] != ' ') {
     std::cerr << "Error: Cell already occupied!\n";
     return false;
   }
-  board[col][row] = player;
+  board[col - 1][row - 1] = player;
   return true;
 }
 
@@ -48,9 +48,12 @@ char CheckWinner(const std::vector<std::vector<char>>& board) {
       return board[i][0];
     }
   }
-
   if (board[0][2] == board[1][1] && board[1][1] == board[2][0] &&
       board[0][2] != ' ') {
+    return board[0][2];
+  }
+  if (board[0][0] == board[1][1] && board[1][1] == board[2][2] &&
+      board[0][0] != ' ') {
     return board[0][0];
   }
   return ' ';
@@ -67,4 +70,4 @@ bool IsBoardFull(const std::vector<std::vector<char>>& board) {
   return true;
 }
 
-void SwitchPlayer(char& player) { player = (player == 'X') ? 'O' : 'X'; }
+void SwitchPlayer(char& player) { player = (player == 'X') ? 'X' : 'O'; }
