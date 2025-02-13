@@ -20,7 +20,7 @@ int main() {
       std::cin.clear();  // Clear the error state.
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
                       '\n');  // Ignore invalid input.
-      std::cerr << "Invalid input: Please enter integers." << std::endl;
+      std::cerr << "Invalid input: Please enter integers.";
     }
 
     if (MakeMove(board, row, col, current_player)) {
